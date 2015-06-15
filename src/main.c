@@ -4,7 +4,7 @@
 #include "time_rendering.h"
   
 static Window *s_main_window;
-static language current_lng = LNG_FR;
+static char* current_lng;
 void update_time() {
   // Get a tm structure
   time_t temp = time(NULL); 
@@ -35,6 +35,9 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
 }
   
 static void init() {
+  // get current language 
+  initCurrentLng();
+  
   // Create main Window element and assign to pointer
   s_main_window = window_create();
 
@@ -54,6 +57,12 @@ static void init() {
 static void deinit() {
   // Destroy Window
   window_destroy(s_main_window);
+}
+
+static void initCurrentLng(){
+  int size =  strlen(i18n_get_system_locale());
+  current_lng = malloc(size * sizeof(char));
+  strcpy(current_lng,i18n_get_system_locale());
 }
 
 int main(void) {

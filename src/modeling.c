@@ -1,7 +1,7 @@
 #include <pebble.h>
 #include "modeling.h"
 
-clockState time2clockState(struct tm *tick_time, language lng){
+clockState time2clockState(struct tm *tick_time, const char* lng){
   
   //init matrix
   int n = 1;
