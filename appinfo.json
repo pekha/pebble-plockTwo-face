@@ -9,8 +9,13 @@
     "resources": {
         "media": [
             {
+                "file": "data/matrix_en.dat",
+                "name": "FILE_CLOCK_MATRIX_EN",
+                "type": "raw"
+            },
+            {
                 "file": "data/matrix.dat",
-                "name": "FILE_CLOCK_MATRIX",
+                "name": "FILE_CLOCK_MATRIX_FR",
                 "type": "raw"
             }
         ]
