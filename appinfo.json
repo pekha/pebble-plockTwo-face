@@ -7,7 +7,13 @@
     "longName": "PlockTwo",
     "projectType": "native",
     "resources": {
-        "media": []
+        "media": [
+            {
+                "file": "data/matrix.dat",
+                "name": "FILE_CLOCK_MATRIX",
+                "type": "raw"
+            }
+        ]
     },
     "sdkVersion": "3",
     "shortName": "PlockTwo",
