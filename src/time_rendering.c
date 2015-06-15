@@ -3,7 +3,7 @@
 
 static TextLayer *s_time_layer;  
   
-void init_graphical_rendering(Window *window){
+void init_graphical_rendering(Window *window, language lng){
   // Create time TextLayer
   s_time_layer = text_layer_create(GRect(0, 55, 144, 50));
   text_layer_set_background_color(s_time_layer, GColorClear);
@@ -19,7 +19,7 @@ void init_graphical_rendering(Window *window){
 }
 
 void deinit_graphical_rendering(){
-  
+  text_layer_destroy(s_time_layer);
 }
 
 void time_rendering(clockState state){

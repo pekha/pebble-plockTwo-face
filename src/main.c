@@ -4,14 +4,14 @@
 #include "time_rendering.h"
   
 static Window *s_main_window;
-
+static language current_lng = LNG_FR;
 void update_time() {
   // Get a tm structure
   time_t temp = time(NULL); 
   struct tm *tick_time = localtime(&temp);
 
   //convert time to matrix state
-  clockState state = time2clockState(tick_time, LNG_FR);
+  clockState state = time2clockState(tick_time, current_lng);
   
   // render state
   time_rendering(state);
@@ -19,7 +19,7 @@ void update_time() {
 
 static void main_window_load(Window *window) {
   // init graphical rendering
-  init_graphical_rendering(window);
+  init_graphical_rendering(window, current_lng);
   
   // Make sure the time is displayed from the start
   update_time();
