@@ -9,13 +9,23 @@
     "resources": {
         "media": [
             {
-                "file": "data/matrix_en.dat",
-                "name": "FILE_CLOCK_MATRIX_EN",
+                "file": "data/zones.dat",
+                "name": "RESOURCE_ID_ZONES_FR",
+                "type": "raw"
+            },
+            {
+                "file": "data/on.dat",
+                "name": "RESOURCE_ID_ON_FR",
                 "type": "raw"
             },
             {
                 "file": "data/matrix.dat",
                 "name": "FILE_CLOCK_MATRIX_FR",
+                "type": "raw"
+            },
+            {
+                "file": "data/matrix_en.dat",
+                "name": "FILE_CLOCK_MATRIX_EN",
                 "type": "raw"
             }
         ]
