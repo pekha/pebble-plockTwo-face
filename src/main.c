@@ -14,7 +14,7 @@ void update_time() {
   clockState state = time2clockState(tick_time, current_lng);
   
   // render state
-  time_rendering(state);
+  time_rendering(state, current_lng);
 }
 
 static void main_window_load(Window *window) {

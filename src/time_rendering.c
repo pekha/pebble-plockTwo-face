@@ -3,12 +3,12 @@
 
 static TextLayer *s_time_layer;  
   
-void init_graphical_rendering(Window *window, char* lng){
+void init_graphical_rendering(Window *window, const char* lng){
   // Create time TextLayer
   s_time_layer = text_layer_create(GRect(0, 55, 144, 50));
   text_layer_set_background_color(s_time_layer, GColorClear);
   text_layer_set_text_color(s_time_layer, GColorBlack);
-  text_layer_set_text(s_time_layer, "00:00");
+  text_layer_set_text(s_time_layer, "00:00 ln");
 
   // Improve the layout to be more like a watchface
   text_layer_set_font(s_time_layer, fonts_get_system_font(FONT_KEY_BITHAM_42_BOLD));
@@ -22,7 +22,7 @@ void deinit_graphical_rendering(){
   text_layer_destroy(s_time_layer);
 }
 
-void time_rendering(clockState state){
+void time_rendering(clockState state, const char* lng){
   // Create a long-lived buffer
   static char buffer[] = "00:00";
 
@@ -35,6 +35,7 @@ void time_rendering(clockState state){
     strftime(buffer, sizeof("00:00"), "%I:%M", state.tick_time);
   }
 
+  strcat(buffer, lng);
   // Display this time on the TextLayer
   text_layer_set_text(s_time_layer, buffer);
 }
