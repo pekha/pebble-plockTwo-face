@@ -10,12 +10,12 @@
         "media": [
             {
                 "file": "data/zones.dat",
-                "name": "RESOURCE_ID_ZONES_FR",
+                "name": "FILE_CLOCK_ZONES_FR",
                 "type": "raw"
             },
             {
                 "file": "data/on.dat",
-                "name": "RESOURCE_ID_ON_FR",
+                "name": "FILE_CLOCK_ON_FR",
                 "type": "raw"
             },
             {

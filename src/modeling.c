@@ -4,8 +4,8 @@
 static char *zones;
 
 void init(){
-  ResHandle handle_zones = resource_get_handle(RESOURCE_ID_ZONES_FR);
-  ResHandle handle_on = resource_get_handle(RESOURCE_ID_ON_FR);
+  ResHandle handle_zones = resource_get_handle(RESOURCE_ID_FILE_CLOCK_ZONES_FR);
+  ResHandle handle_on = resource_get_handle(RESOURCE_ID_FILE_CLOCK_ON_FR);
   size_t handle_zones_size = resource_size(handle_zones);
   zones = (char*)malloc(handle_zones_size);
   resource_load(handle_zones, (uint8_t*)zones, handle_zones_size);
