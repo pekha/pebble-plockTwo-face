@@ -1,0 +1,22 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "Peka",
+    "longName": "PlockTwo",
+    "projectType": "native",
+    "resources": {
+        "media": []
+    },
+    "sdkVersion": "3",
+    "shortName": "PlockTwo",
+    "targetPlatforms": [
+        "basalt"
+    ],
+    "uuid": "79d8da78-40d1-456c-b2fb-238b12075044",
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": true
+    }
+}
