@@ -7,14 +7,11 @@ MatrixData* create_matrix_data(const char* lng) {
   // Get resource and size
   ResHandle handle = resource_get_handle(get_id_from_locale(lng));
   
-  //resource size
-  size_t res_size = resource_size(handle);
-
   // Copy to buffer
   char* row = (char*)malloc(sizeof("00"));
   char* col = (char*)malloc(sizeof("00"));
-  resource_load_byte_range(handle, 0, (uint8_t*) row, 2);
-  resource_load_byte_range(handle, 4, (uint8_t*) col, 2);
+  resource_load_byte_range(handle, 0, (uint8_t*) col, 2);
+  resource_load_byte_range(handle, 4, (uint8_t*) row, 2);
   matrix_data->rowNb = atoi(row);
   matrix_data->colNb = atoi(col);
   size_t data_size = matrix_data->rowNb * matrix_data->colNb * sizeof(char);
