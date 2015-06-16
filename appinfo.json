@@ -9,6 +9,16 @@
     "resources": {
         "media": [
             {
+                "file": "fonts/DIN Bold.ttf",
+                "name": "FONT_DIN_BOLD_14",
+                "type": "font"
+            },
+            {
+                "file": "fonts/DIN Medium.ttf",
+                "name": "FONT_DIN_MEDIUM_14",
+                "type": "font"
+            },
+            {
                 "file": "data/matrix-one-line-en.dat",
                 "name": "FILE_CLOCK_MATRIX_EN",
                 "type": "raw"

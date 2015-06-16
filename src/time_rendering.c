@@ -7,12 +7,13 @@ static char*** letter_buffer;
 static TextLayer *s_min_layer[4];
 static int nbCol;
 static int nbRow;
+static GFont s_custom_font;
   
 void init_graphical_rendering(Window *window, const char* lng){
   MatrixData* matrix_data = create_matrix_data(lng);
   nbCol = matrix_data->colNb;
   nbRow = matrix_data->rowNb;
-  
+  s_custom_font = fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_DIN_BOLD_14));
   s_time_layer = malloc(nbRow * sizeof(TextLayer**));
   letter_buffer = malloc(nbRow * sizeof(char**));
   for(int curRow = 0; curRow < nbRow; curRow ++){
@@ -22,7 +23,7 @@ void init_graphical_rendering(Window *window, const char* lng){
       letter_buffer[curRow][curCol] = malloc(sizeof(char)*2);
       letter_buffer[curRow][curCol][0] = matrix_data->data[coord2index(curRow, curCol)];
       letter_buffer[curRow][curCol][1] ='\0'; 
-      s_time_layer[curRow][curCol] = create_text_layer(GRect(curCol*12 + curCol + 1, curRow*13 + curRow + 1, 12, 16), fonts_get_system_font(FONT_KEY_GOTHIC_14_BOLD),letter_buffer[curRow][curCol]);
+      s_time_layer[curRow][curCol] = create_text_layer(GRect(curCol*12 + curCol + 1, curRow*13 + curRow + 1, 12, 16), s_custom_font ,letter_buffer[curRow][curCol]);
       layer_add_child(window_get_root_layer(window), text_layer_get_layer(s_time_layer[curRow][curCol]));
     }
   }
@@ -73,6 +74,7 @@ void deinit_graphical_rendering(){
   for(int i = 0; i < 4; i ++){
     text_layer_destroy(s_min_layer[i]);
   }
+  fonts_unload_custom_font(s_custom_font);
 }
 
 void time_rendering(clockState* state, const char* lng){
