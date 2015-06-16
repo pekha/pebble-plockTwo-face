@@ -11,7 +11,7 @@ static bool** state;
 
 static ResHandle get_zones_res_handle(char* lng){
   ResHandle handle_zones = resource_get_handle(RESOURCE_ID_FILE_CLOCK_ZONES_EN);
-  if (strcmp("FR", lng) == 0){
+  if (strcmp("fr_FR", lng) == 0){
     handle_zones = resource_get_handle(RESOURCE_ID_FILE_CLOCK_ZONES_FR);
   }
   
@@ -20,7 +20,7 @@ static ResHandle get_zones_res_handle(char* lng){
 
 static ResHandle get_on_res_handle(char* lng){
   ResHandle handle_on = resource_get_handle(RESOURCE_ID_FILE_CLOCK_ON_EN);
-  if (strcmp("FR", lng) == 0){
+  if (strcmp("fr_FR", lng) == 0){
     handle_on = resource_get_handle(RESOURCE_ID_FILE_CLOCK_ON_FR);
   }
   return handle_on;

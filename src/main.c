@@ -67,6 +67,7 @@ static void initCurrentLng(){
   int size =  strlen(i18n_get_system_locale());
   current_lng = malloc(size * sizeof(char));
   strcpy(current_lng,i18n_get_system_locale());
+  APP_LOG(APP_LOG_LEVEL_DEBUG, "locale : %s", current_lng);
 }
 
 int main(void) {
