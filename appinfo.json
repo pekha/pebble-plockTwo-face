@@ -9,12 +9,12 @@
     "resources": {
         "media": [
             {
-                "file": "data/matrix_en.dat",
+                "file": "data/matrix-one-line-en.dat",
                 "name": "FILE_CLOCK_MATRIX_EN",
                 "type": "raw"
             },
             {
-                "file": "data/matrix.dat",
+                "file": "data/matrix-one-line-fr.dat",
                 "name": "FILE_CLOCK_MATRIX_FR",
                 "type": "raw"
             },
