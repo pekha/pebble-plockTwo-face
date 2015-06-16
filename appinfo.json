@@ -9,13 +9,8 @@
     "resources": {
         "media": [
             {
-                "file": "data/zones.dat",
-                "name": "FILE_CLOCK_ZONES_FR",
-                "type": "raw"
-            },
-            {
-                "file": "data/on.dat",
-                "name": "FILE_CLOCK_ON_FR",
+                "file": "data/matrix_en.dat",
+                "name": "FILE_CLOCK_MATRIX_EN",
                 "type": "raw"
             },
             {
@@ -24,8 +19,13 @@
                 "type": "raw"
             },
             {
-                "file": "data/matrix_en.dat",
-                "name": "FILE_CLOCK_MATRIX_EN",
+                "file": "data/on.dat",
+                "name": "FILE_CLOCK_ON_FR",
+                "type": "raw"
+            },
+            {
+                "file": "data/zones.dat",
+                "name": "FILE_CLOCK_ZONES_FR",
                 "type": "raw"
             }
         ]
