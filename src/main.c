@@ -11,7 +11,7 @@ void update_time() {
   struct tm *tick_time = localtime(&temp);
 
   //convert time to matrix state
-  clockState state = time2clockState(tick_time, current_lng);
+  clockState state = time2clockState(tick_time);
   
   // render state
   time_rendering(state, current_lng);
@@ -38,6 +38,9 @@ static void init() {
   // get current language 
   initCurrentLng();
   
+  // Initialize data modeling
+  init_time2clockState(current_lng);
+  
   // Create main Window element and assign to pointer
   s_main_window = window_create();
 
@@ -57,6 +60,7 @@ static void init() {
 static void deinit() {
   // Destroy Window
   window_destroy(s_main_window);
+  destroy_time2clockState();
 }
 
 static void initCurrentLng(){

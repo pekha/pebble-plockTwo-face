@@ -9,13 +9,8 @@
     "resources": {
         "media": [
             {
-                "file": "data/matrix-one-line-en.dat",
-                "name": "FILE_CLOCK_MATRIX_EN",
-                "type": "raw"
-            },
-            {
-                "file": "data/matrix-one-line-fr.dat",
-                "name": "FILE_CLOCK_MATRIX_FR",
+                "file": "data/zones.dat",
+                "name": "FILE_CLOCK_ZONES_FR",
                 "type": "raw"
             },
             {
@@ -24,8 +19,13 @@
                 "type": "raw"
             },
             {
-                "file": "data/zones.dat",
-                "name": "FILE_CLOCK_ZONES_FR",
+                "file": "data/matrix-one-line-fr.dat",
+                "name": "FILE_CLOCK_MATRIX_FR",
+                "type": "raw"
+            },
+            {
+                "file": "data/matrix-one-line-en.dat",
+                "name": "FILE_CLOCK_MATRIX_EN",
                 "type": "raw"
             }
         ]

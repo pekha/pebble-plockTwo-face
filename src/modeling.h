@@ -10,4 +10,6 @@ typedef struct {
   
 typedef enum {LNG_FR, LNG_EN} language;
 
-clockState time2clockState(struct tm *tick_time, language lng);
+clockState time2clockState(struct tm *tick_time);
+void init_time2clockState(char* lng);
+void destroy_time2clockState();
