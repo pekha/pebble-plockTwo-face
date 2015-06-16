@@ -9,23 +9,8 @@
     "resources": {
         "media": [
             {
-                "file": "data/zones-fr.dat",
-                "name": "FILE_CLOCK_ZONES_FR",
-                "type": "raw"
-            },
-            {
-                "file": "data/zones-en.dat",
-                "name": "FILE_CLOCK_ZONES_EN",
-                "type": "raw"
-            },
-            {
-                "file": "data/on-en.dat",
-                "name": "FILE_CLOCK_ON_EN",
-                "type": "raw"
-            },
-            {
-                "file": "data/on-fr.dat",
-                "name": "FILE_CLOCK_ON_FR",
+                "file": "data/matrix-one-line-en.dat",
+                "name": "FILE_CLOCK_MATRIX_EN",
                 "type": "raw"
             },
             {
@@ -34,8 +19,23 @@
                 "type": "raw"
             },
             {
-                "file": "data/matrix-one-line-en.dat",
-                "name": "FILE_CLOCK_MATRIX_EN",
+                "file": "data/on-fr.dat",
+                "name": "FILE_CLOCK_ON_FR",
+                "type": "raw"
+            },
+            {
+                "file": "data/on-en.dat",
+                "name": "FILE_CLOCK_ON_EN",
+                "type": "raw"
+            },
+            {
+                "file": "data/zones-en.dat",
+                "name": "FILE_CLOCK_ZONES_EN",
+                "type": "raw"
+            },
+            {
+                "file": "data/zones-fr.dat",
+                "name": "FILE_CLOCK_ZONES_FR",
                 "type": "raw"
             }
         ]

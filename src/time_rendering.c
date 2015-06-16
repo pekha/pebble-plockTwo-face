@@ -75,6 +75,26 @@ void deinit_graphical_rendering(){
   }
 }
 
-void time_rendering(clockState state, const char* lng){
+void time_rendering(clockState* state, const char* lng){
+   for(int curRow = 0; curRow < nbRow; curRow ++){
+    for(int curCol = 0; curCol < nbCol; curCol ++){
+       if(state->state[curRow][curCol]){
+         text_layer_set_text_color(s_time_layer[curRow][curCol], GColorWhite);
+       }
+       else{
+        text_layer_set_text_color(s_time_layer[curRow][curCol], GColorBulgarianRose);
+       }
+     }
+   }
+   
+  int min = state->tick_time->tm_min;
   
+  computeMinutes(0, min, 1);
+  computeMinutes(1, min, 2);
+  computeMinutes(2, min, 3);
+  computeMinutes(3, min, 4);
+}
+
+static void computeMinutes(short index,int minutes, short threshold){
+  text_layer_set_text_color(s_min_layer[index], minutes % 5 >= threshold ? GColorWhite : GColorBulgarianRose);
 }
