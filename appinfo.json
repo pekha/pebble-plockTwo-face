@@ -9,12 +9,22 @@
     "resources": {
         "media": [
             {
-                "file": "data/zones.dat",
+                "file": "data/zones-fr.dat",
                 "name": "FILE_CLOCK_ZONES_FR",
                 "type": "raw"
             },
             {
-                "file": "data/on.dat",
+                "file": "data/zones-en.dat",
+                "name": "FILE_CLOCK_ZONES_EN",
+                "type": "raw"
+            },
+            {
+                "file": "data/on-en.dat",
+                "name": "FILE_CLOCK_ON_EN",
+                "type": "raw"
+            },
+            {
+                "file": "data/on-fr.dat",
                 "name": "FILE_CLOCK_ON_FR",
                 "type": "raw"
             },
