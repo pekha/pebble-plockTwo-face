@@ -15,9 +15,9 @@ static GColor s_off_letter_color;
 static GColor s_on_letter_color;
 
 void init_graphical_rendering(Window *window, const char* lng){
-  s_background_color = GColorBlack;//GColorBlueMoon;//GColorDarkCandyAppleRed;
-  s_off_letter_color = GColorDarkGray;//GColorDarkGreen;//GColorBulgarianRose;
-  s_on_letter_color = GColorWhite;//GColorWhite;//GColorWhite;
+  s_background_color = GColorDarkCandyAppleRed;//GColorBlack;//GColorBlueMoon;
+  s_off_letter_color = GColorBulgarianRose;//GColorDarkGray;//GColorDarkGreen;
+  s_on_letter_color = GColorWhite;
   
   MatrixData* matrix_data = create_matrix_data(lng);
   nbCol = matrix_data->colNb;
