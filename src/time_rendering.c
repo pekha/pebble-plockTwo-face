@@ -8,8 +8,16 @@ static TextLayer *s_min_layer[4];
 static int nbCol;
 static int nbRow;
 static GFont s_custom_font;
-  
+
+static GColor s_background_color;
+static GColor s_off_letter_color;
+static GColor s_on_letter_color;
+
 void init_graphical_rendering(Window *window, const char* lng){
+  s_background_color = GColorCyan;//GColorDarkCandyAppleRed;
+  s_off_letter_color = GColorVividCerulean;//GColorBulgarianRose;
+  s_on_letter_color = GColorBlack;//GColorWhite;
+  
   MatrixData* matrix_data = create_matrix_data(lng);
   nbCol = matrix_data->colNb;
   nbRow = matrix_data->rowNb;
@@ -43,13 +51,13 @@ void init_graphical_rendering(Window *window, const char* lng){
   destroy_Matrix_Data(matrix_data);
   
   //set window background color
-  window_set_background_color(window, GColorDarkCandyAppleRed);
+  window_set_background_color(window, s_background_color);
 }
 
 static TextLayer* create_text_layer(GRect rect, GFont font, char* val){
   TextLayer *part_layer = text_layer_create(rect);
   text_layer_set_background_color(part_layer, GColorClear);
-  text_layer_set_text_color(part_layer, GColorBulgarianRose);
+  text_layer_set_text_color(part_layer, s_off_letter_color);
   text_layer_set_font(part_layer, font);
   text_layer_set_text_alignment(part_layer, GTextAlignmentCenter);
   text_layer_set_text(part_layer, val);
@@ -81,10 +89,10 @@ void time_rendering(clockState* state, const char* lng){
    for(int curRow = 0; curRow < nbRow; curRow ++){
     for(int curCol = 0; curCol < nbCol; curCol ++){
        if(state->state[curRow][curCol]){
-         text_layer_set_text_color(s_time_layer[curRow][curCol], GColorWhite);
+         text_layer_set_text_color(s_time_layer[curRow][curCol], s_on_letter_color);
        }
        else{
-        text_layer_set_text_color(s_time_layer[curRow][curCol], GColorBulgarianRose);
+        text_layer_set_text_color(s_time_layer[curRow][curCol], s_off_letter_color);
        }
      }
    }
@@ -98,5 +106,5 @@ void time_rendering(clockState* state, const char* lng){
 }
 
 static void computeMinutes(short index,int minutes, short threshold){
-  text_layer_set_text_color(s_min_layer[index], minutes % 5 >= threshold ? GColorWhite : GColorBulgarianRose);
+  text_layer_set_text_color(s_min_layer[index], minutes % 5 >= threshold ? s_on_letter_color : s_off_letter_color);
 }
