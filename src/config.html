@@ -1,32 +1,43 @@
 <script >
-var i = 0;
+var choice = 0;
 document.addEventListener('click', function(e) {
     e = e || window.event;
     var target = e.target || e.srcElement;
     if (target.localName == "polygon"){
-		var rule = document.styleSheets[0].cssRules[i];
-		if (i == 1){
+	   var radios = document.getElementsByName("choice")
+	   for (var j = 0, length = radios.length; j < length; j++) {
+		if (radios[j].checked) {
+			choice =radios[j].value
+
+			// only one radio can be logically checked, don't check the rest
+			break;
+			}
+		}
+	    
+		var rule = document.styleSheets[0].cssRules[choice];
+		if (choice == 1){
 			rule.style.setProperty("color",target.attributes.fill.value);
 		}
-		else if (i==2){
+		else if (choice==2){
 			rule.style.setProperty("color",target.attributes.fill.value);
 		}
-		else if (i==0){
+		else if (choice==0){
 			rule.style.setProperty("background",target.attributes.fill.value);
 		}
-		i++;
-		if (i>=3){
-			i = 0;
+		choice++;
+		if (choice>=3){
+			choice = 0;
 		}
-		if (i == 1){
+		if (choice == 1){
 			document.getElementById("label").innerText = "Set OFF light letter color"
 		}
-		else if (i==2){
+		else if (choice==2){
 			document.getElementById("label").innerText = "Set ON light letter color"
 		}
-		else if (i==0){
+		else if (choice==0){
 			document.getElementById("label").innerText = "Set background color"
 		}
+		radios[choice].checked = true
 	}
 }, false);
 </script>
@@ -56,7 +67,13 @@ document.addEventListener('click', function(e) {
 <tr><td class="letter_off">S</td><td class="letter_off">E</td><td class="letter_off">V</td><td class="letter_off">E</td><td class="letter_off">N</td><td class="letter_off">T</td><td class="letter_off">W</td><td class="letter_off">E</td><td class="letter_off">L</td><td class="letter_off">V</td><td class="letter_off">E</td></tr>
 <tr><td class="letter_off">T</td><td class="letter_off">E</td><td class="letter_off">N</td><td class="letter_off">S</td><td class="letter_off">E</td><td class="letter_off">O</td><td class="letter_off">C</td><td class="letter_off">L</td><td class="letter_off">O</td><td class="letter_off">C</td><td class="letter_off">K</td></tr>
 </TABLE> 
-
+<div>
+<FORM>
+<INPUT type= "radio" name="choice" value="0" checked>Set Background color</input>
+<INPUT type= "radio" name="choice" value="1">Set OFF light letter color</input>
+<INPUT type= "radio" name="choice" value="2">Set ON light letter color</input>
+</FORM>
+</div>
 <div id="label">Set background color</div>
 <div style="width:auto" >
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="435 240 355 345" enable-background="new 448.1 251.5 329.2 323.8" xml:space="preserve" id="color-picker" class="color-picker" style="background: lightgray">
