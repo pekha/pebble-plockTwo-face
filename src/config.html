@@ -32,22 +32,35 @@ document.addEventListener('click', function(e) {
 		radios[choice].checked = true
 	}
 }, false);
+function save(){
+	var background = document.styleSheets[0].cssRules[0]
+	var letter_off = document.styleSheets[0].cssRules[1]
+	var letter_on = document.styleSheets[0].cssRules[2]
+	alert(background.style.background + " " + letter_off.style.color + " " + letter_on.style.color)
+}
 </script>
 <style type="text/css">
 .background{
-    background: black;
+    background: #000;
     text-align: center;
 }
 .letter_off{
-    color:darkgray;
+    color:#555;
 } 
 .letter_on{
-    color:white;
-} 
+    color:#FFF;
+}
+.sized{
+    width: 100vw;
+	height: 100vw;
+	max-width: 500px;
+	max-height: 500px;
+	font-size: 5vw;
+}
 </style>
 
-
-<TABLE BORDER="0" class="background"> 
+<FORM>
+<TABLE BORDER="0" class="background sized"> 
 <tr><td class="letter_on">I</td><td class="letter_on">T</td><td class="letter_off">L</td><td class="letter_on">I</td><td class="letter_on">S</td><td class="letter_off">A</td><td class="letter_off">S</td><td class="letter_off">A</td><td class="letter_off">M</td><td class="letter_off">P</td><td class="letter_off">M</td></tr>
 <tr><td class="letter_on">A</td><td class="letter_off">C</td><td class="letter_on">Q</td><td class="letter_on">U</td><td class="letter_on">A</td><td class="letter_on">R</td><td class="letter_on">T</td><td class="letter_on">E</td><td class="letter_on">R</td><td class="letter_off">D</td><td class="letter_off">C</td></tr>
 <tr><td class="letter_off">T</td><td class="letter_off">W</td><td class="letter_off">E</td><td class="letter_off">N</td><td class="letter_off">T</td><td class="letter_off">Y</td><td class="letter_off">F</td><td class="letter_off">I</td><td class="letter_off">V</td><td class="letter_off">E</td><td class="letter_off">X</td></tr>
@@ -60,13 +73,13 @@ document.addEventListener('click', function(e) {
 <tr><td class="letter_off">T</td><td class="letter_off">E</td><td class="letter_off">N</td><td class="letter_off">S</td><td class="letter_off">E</td><td class="letter_off">O</td><td class="letter_off">C</td><td class="letter_off">L</td><td class="letter_off">O</td><td class="letter_off">C</td><td class="letter_off">K</td></tr>
 </TABLE> 
 <div>
-<FORM>
-<INPUT type= "radio" name="choice" value="0" checked>Set Background color</input>
-<INPUT type= "radio" name="choice" value="1">Set OFF light letter color</input>
-<INPUT type= "radio" name="choice" value="2">Set ON light letter color</input>
-</FORM>
+
+<INPUT type= "radio" name="choice" value="0" checked>Set Background color</input><br/>
+<INPUT type= "radio" name="choice" value="1">Set OFF light letter color</input><br/>
+<INPUT type= "radio" name="choice" value="2">Set ON light letter color</input><br/>
+
 </div>
-<div style="width:auto" >
+<div style="width:auto" class="sized">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="435 240 355 345" enable-background="new 448.1 251.5 329.2 323.8" xml:space="preserve" id="color-picker" class="color-picker" style="background: lightgray">
 	<polygon stroke="#FFFFFF" stroke-width="1.5" fill="#000000" points="728.4,279.4 744.9,289 744.9,308.1 728.4,317.7 711.8,308.1 711.8,289 	"></polygon>
 	<polygon stroke="#FFFFFF" stroke-width="1.5" fill="#000055" points="629.2,451.6 645.7,461.2 645.7,480.3 629.2,489.9 612.7,480.3 612.7,461.2 	"></polygon>
@@ -135,3 +148,5 @@ document.addEventListener('click', function(e) {
 </svg>
 
 </div>
+<input id="clickMe" type="button" value="Save" onclick="save();" />
+</FORM>
