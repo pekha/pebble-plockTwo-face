@@ -1,5 +1,11 @@
 {
-    "appKeys": {},
+    "appKeys": {
+    	"STORAGE_VERSION_KEY": 0,
+	"BACKGROUND_KEY": 1,
+	"LETTER_ON_KEY" : 2,
+	"LETTER_OFF_KEY" : 3,
+	"THINER_OFF_FONT_KEY" : 4
+    },
     "capabilities": [
         "location",
         "configurable"
