@@ -1,10 +1,10 @@
 {
     "appKeys": {
-    	"STORAGE_VERSION_KEY": 0,
-	"BACKGROUND_KEY": 1,
-	"LETTER_ON_KEY" : 2,
-	"LETTER_OFF_KEY" : 3,
-	"THINER_OFF_FONT_KEY" : 4
+        "BACKGROUND_KEY": 1,
+        "LETTER_OFF_KEY": 3,
+        "LETTER_ON_KEY": 2,
+        "STORAGE_VERSION_KEY": 0,
+        "THINER_OFF_FONT_KEY": 4
     },
     "capabilities": [
         "location",
@@ -16,33 +16,8 @@
     "resources": {
         "media": [
             {
-                "file": "fonts/DIN Bold.ttf",
-                "name": "FONT_DIN_BOLD_14",
-                "type": "font"
-            },
-            {
-                "file": "fonts/DIN Medium.ttf",
-                "name": "FONT_DIN_MEDIUM_14",
-                "type": "font"
-            },
-            {
-                "file": "data/zones-fr.dat",
-                "name": "FILE_CLOCK_ZONES_FR",
-                "type": "raw"
-            },
-            {
-                "file": "data/zones-en.dat",
-                "name": "FILE_CLOCK_ZONES_EN",
-                "type": "raw"
-            },
-            {
-                "file": "data/on-en.dat",
-                "name": "FILE_CLOCK_ON_EN",
-                "type": "raw"
-            },
-            {
-                "file": "data/on-fr.dat",
-                "name": "FILE_CLOCK_ON_FR",
+                "file": "data/matrix-one-line-en.dat",
+                "name": "FILE_CLOCK_MATRIX_EN",
                 "type": "raw"
             },
             {
@@ -51,9 +26,34 @@
                 "type": "raw"
             },
             {
-                "file": "data/matrix-one-line-en.dat",
-                "name": "FILE_CLOCK_MATRIX_EN",
+                "file": "data/on-fr.dat",
+                "name": "FILE_CLOCK_ON_FR",
                 "type": "raw"
+            },
+            {
+                "file": "data/on-en.dat",
+                "name": "FILE_CLOCK_ON_EN",
+                "type": "raw"
+            },
+            {
+                "file": "data/zones-en.dat",
+                "name": "FILE_CLOCK_ZONES_EN",
+                "type": "raw"
+            },
+            {
+                "file": "data/zones-fr.dat",
+                "name": "FILE_CLOCK_ZONES_FR",
+                "type": "raw"
+            },
+            {
+                "file": "fonts/DIN Medium.ttf",
+                "name": "FONT_DIN_MEDIUM_14",
+                "type": "font"
+            },
+            {
+                "file": "fonts/DIN Bold.ttf",
+                "name": "FONT_DIN_BOLD_14",
+                "type": "font"
             }
         ]
     },
