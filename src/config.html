@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Configurable</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
 <script >
 var choice = 0;
 document.addEventListener('click', function(e) {
@@ -36,7 +44,21 @@ function save(){
 	var background = document.styleSheets[0].cssRules[0]
 	var letter_off = document.styleSheets[0].cssRules[1]
 	var letter_on = document.styleSheets[0].cssRules[2]
-	alert(background.style.background + " " + letter_off.style.color + " " + letter_on.style.color)
+	var myRegex = /[^\d]*\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+).*/
+	background = myRegex.exec(background.style.background)
+	letter_off = myRegex.exec(letter_off.style.color)
+	letter_on = myRegex.exec(letter_on.style.color)
+	var location = "pebblejs://close#" + 
+	new Number(background[1]).toString(16) +
+	new Number(background[2]).toString(16) +
+	new Number(background[3]).toString(16) + ";" +
+	new Number(letter_off[1]).toString(16) +
+	new Number(letter_off[2]).toString(16) +
+	new Number(letter_off[3]).toString(16) + ";" +
+	new Number(letter_on[1]).toString(16) +
+	new Number(letter_on[2]).toString(16) +
+	new Number(letter_on[3]).toString(16)
+	alert(location)
 }
 </script>
 <style type="text/css">
@@ -56,8 +78,8 @@ function save(){
 	font-size: 12px;
 }
 .picker{
-    width: 500px;
-	height: 500px;
+    width: 100vw;
+	height: 100vw;
 }
 </style>
 
@@ -74,7 +96,7 @@ function save(){
 <tr><td class="letter_off">S</td><td class="letter_off">E</td><td class="letter_off">V</td><td class="letter_off">E</td><td class="letter_off">N</td><td class="letter_off">T</td><td class="letter_off">W</td><td class="letter_off">E</td><td class="letter_off">L</td><td class="letter_off">V</td><td class="letter_off">E</td></tr>
 <tr><td class="letter_off">T</td><td class="letter_off">E</td><td class="letter_off">N</td><td class="letter_off">S</td><td class="letter_off">E</td><td class="letter_off">O</td><td class="letter_off">C</td><td class="letter_off">L</td><td class="letter_off">O</td><td class="letter_off">C</td><td class="letter_off">K</td></tr>
 </TABLE> 
-<div>
+<div >
 
 <INPUT type= "radio" name="choice" value="0" checked>Set Background color</input><br/>
 <INPUT type= "radio" name="choice" value="1">Set OFF light letter color</input><br/>
@@ -152,3 +174,4 @@ function save(){
 </div>
 <input id="clickMe" type="button" value="Save" onclick="save();" />
 </FORM>
+</body>
