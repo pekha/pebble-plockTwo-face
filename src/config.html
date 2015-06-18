@@ -4,32 +4,45 @@ document.addEventListener('click', function(e) {
     e = e || window.event;
     var target = e.target || e.srcElement;
     if (target.localName == "polygon"){
-		if (i>=3){
-			i = 0;
-		}
 		var rule = document.styleSheets[0].cssRules[i];
-		if (i<2){
+		if (i == 1){
 			rule.style.setProperty("color",target.attributes.fill.value);
 		}
-		else{
+		else if (i==2){
+			rule.style.setProperty("color",target.attributes.fill.value);
+		}
+		else if (i==0){
 			rule.style.setProperty("background",target.attributes.fill.value);
 		}
 		i++;
+		if (i>=3){
+			i = 0;
+		}
+		if (i == 1){
+			document.getElementById("label").innerText = "Set OFF light letter color"
+		}
+		else if (i==2){
+			document.getElementById("label").innerText = "Set ON light letter color"
+		}
+		else if (i==0){
+			document.getElementById("label").innerText = "Set background color"
+		}
 	}
 }, false);
 </script>
 <style type="text/css">
-.letter_on{
-    color:white;
-} 
-.letter_off{
-    color:darkgray;
-} 
 .background{
     background: black;
     text-align: center;
 }
+.letter_off{
+    color:darkgray;
+} 
+.letter_on{
+    color:white;
+} 
 </style>
+
 
 <TABLE BORDER="0" class="background"> 
 <tr><td class="letter_on">I</td><td class="letter_on">T</td><td class="letter_off">L</td><td class="letter_on">I</td><td class="letter_on">S</td><td class="letter_off">A</td><td class="letter_off">S</td><td class="letter_off">A</td><td class="letter_off">M</td><td class="letter_off">P</td><td class="letter_off">M</td></tr>
@@ -44,6 +57,7 @@ document.addEventListener('click', function(e) {
 <tr><td class="letter_off">T</td><td class="letter_off">E</td><td class="letter_off">N</td><td class="letter_off">S</td><td class="letter_off">E</td><td class="letter_off">O</td><td class="letter_off">C</td><td class="letter_off">L</td><td class="letter_off">O</td><td class="letter_off">C</td><td class="letter_off">K</td></tr>
 </TABLE> 
 
+<div id="label">Set background color</div>
 <div style="width:auto" >
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="435 240 355 345" enable-background="new 448.1 251.5 329.2 323.8" xml:space="preserve" id="color-picker" class="color-picker" style="background: lightgray">
 	<polygon stroke="#FFFFFF" stroke-width="1.5" fill="#000000" points="728.4,279.4 744.9,289 744.9,308.1 728.4,317.7 711.8,308.1 711.8,289 	"></polygon>
