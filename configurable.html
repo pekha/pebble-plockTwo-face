@@ -8,6 +8,16 @@
   <body>
 <script >
 var choice = 0;
+function getStyleSheet(){
+	var res;
+	for (var i=0; i < document.styleSheets.length; i++){
+		if (document.styleSheets[i] == "myStyle"){
+			res = document.styleSheets[i];
+			break;
+		}
+	}
+	return res;
+}
 document.addEventListener('click', function(e) {
     e = e || window.event;
     var target = e.target || e.srcElement;
@@ -22,7 +32,7 @@ document.addEventListener('click', function(e) {
 			}
 		}
 	    
-		var rule = document.styleSheets[0].cssRules[choice];
+		var rule = getStyleSheet().cssRules[choice];
 		if (choice == 1){
 			rule.style.setProperty("color",target.attributes.fill.value);
 		}
@@ -69,7 +79,7 @@ function save(){
 	document.location = location;
 }
 </script>
-<style type="text/css">
+<style type="text/css" title="myStyle">
 .background{
     background: #000;
     text-align: center;
