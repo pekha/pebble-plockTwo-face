@@ -59,9 +59,9 @@ function toHex(num){
 	return pad(new Number(num).toString(16),2);
 }
 function save(){
-	var background = document.styleSheets[0].cssRules[0]
-	var letter_off = document.styleSheets[0].cssRules[1]
-	var letter_on = document.styleSheets[0].cssRules[2]
+	var background = document.getStyleSheet().cssRules[0]
+	var letter_off = document.getStyleSheet().cssRules[1]
+	var letter_on = document.getStyleSheet().cssRules[2]
 	var myRegex = /[^\d]*\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+).*/
 	background = myRegex.exec(background.style.background)
 	letter_off = myRegex.exec(letter_off.style.color)
