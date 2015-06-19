@@ -58,6 +58,20 @@ function pad(num, size) {
 function toHex(num){
 	return pad(new Number(num).toString(16),2);
 }
+function getQueryParam(variable, defaultValue) {
+  // Find all URL parameters
+  var query = location.search.substring(1);
+  var vars = query.split('&');
+  for (var i = 0; i < vars.length; i++) {
+    var pair = vars[i].split('=');
+
+    // If the query variable parameter is found, decode it to use and return it for use
+    if (pair[0] === variable) {
+      return decodeURIComponent(pair[1]);
+    }
+  }
+  return defaultValue || false;
+}
 function save(){
 	var background = getStyleSheet().cssRules[0]
 	var letter_off = getStyleSheet().cssRules[1]
@@ -66,8 +80,7 @@ function save(){
 	background = myRegex.exec(background.style.background)
 	letter_off = myRegex.exec(letter_off.style.color)
 	letter_on = myRegex.exec(letter_on.style.color)
-	var location = "pebblejs://close#" + 
-	toHex(background[1]) +
+	var params = toHex(background[1]) +
 	toHex(background[2]) +
 	toHex(background[3]) + ";" +
 	toHex(letter_off[1]) +
@@ -76,7 +89,8 @@ function save(){
 	toHex(letter_on[1]) +
 	toHex(letter_on[2]) +
 	toHex(letter_on[3]);
-	document.location = location;
+	var return_to = getQueryParam('return_to', 'pebblejs://close#');
+	document.location = return_to + params;
 }
 </script>
 <style type="text/css" title="myStyle">
