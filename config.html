@@ -40,6 +40,14 @@ document.addEventListener('click', function(e) {
 		radios[choice].checked = true
 	}
 }, false);
+function pad(num, size) {
+    var s = num+"";
+    while (s.length < size) s = "0" + s;
+    return s;
+}
+function toHex(num){
+	return pad(new Number(num).toString(16),2);
+}
 function save(){
 	var background = document.styleSheets[0].cssRules[0]
 	var letter_off = document.styleSheets[0].cssRules[1]
@@ -49,15 +57,15 @@ function save(){
 	letter_off = myRegex.exec(letter_off.style.color)
 	letter_on = myRegex.exec(letter_on.style.color)
 	var location = "pebblejs://close#" + 
-	new Number(background[1]).toString(16) +
-	new Number(background[2]).toString(16) +
-	new Number(background[3]).toString(16) + ";" +
-	new Number(letter_off[1]).toString(16) +
-	new Number(letter_off[2]).toString(16) +
-	new Number(letter_off[3]).toString(16) + ";" +
-	new Number(letter_on[1]).toString(16) +
-	new Number(letter_on[2]).toString(16) +
-	new Number(letter_on[3]).toString(16);
+	toHex(background[1]) +
+	toHex(background[2]) +
+	toHex(background[3]) + ";" +
+	toHex(letter_off[1]) +
+	toHex(letter_off[2]) +
+	toHex(letter_off[3]) + ";" +
+	toHex(letter_on[1]) +
+	toHex(letter_on[2]) +
+	toHex(letter_on[3]);
 	document.location = location;
 }
 </script>
