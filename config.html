@@ -11,7 +11,7 @@ var choice = 0;
 function getStyleSheet(){
 	var res;
 	for (var i=0; i < document.styleSheets.length; i++){
-		if (document.styleSheets[i] == "myStyle"){
+		if (document.styleSheets[i].title == "myStyle"){
 			res = document.styleSheets[i];
 			break;
 		}
