@@ -1,6 +1,7 @@
 #include <pebble.h>
 #include "ressourcesUtil.h"
 #include "time_rendering.h"
+#include "settings.h"
 
 static TextLayer ***s_time_layer;  
 static char*** letter_buffer;
@@ -14,10 +15,15 @@ static GColor s_background_color;
 static GColor s_off_letter_color;
 static GColor s_on_letter_color;
 
+static void init_colors_from_settings(){
+  Settings* settings = get_settings();
+  s_background_color = settings->background;
+  s_off_letter_color = settings->letter_off;
+  s_on_letter_color = settings->letter_on;
+}
+
 void init_graphical_rendering(Window *window, const char* lng){
-  s_background_color = GColorDarkCandyAppleRed;//GColorBlack;//GColorBlueMoon;
-  s_off_letter_color = GColorBulgarianRose;//GColorDarkGray;//GColorDarkGreen;
-  s_on_letter_color = GColorWhite;
+  init_colors_from_settings();
   
   MatrixData* matrix_data = create_matrix_data(lng);
   nbCol = matrix_data->colNb;

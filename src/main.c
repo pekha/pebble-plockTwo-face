@@ -2,6 +2,7 @@
 #include "main.h"
 #include "modeling.h"
 #include "time_rendering.h"
+#include "settings.h"
   
 static Window *s_main_window;
 static char* current_lng;
@@ -33,8 +34,49 @@ static void main_window_unload(Window *window) {
 static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
   update_time();
 }
+
+static void inbox_received_callback(DictionaryIterator *iterator, void *context) {
+  APP_LOG(APP_LOG_LEVEL_ERROR, "Message received!");
+  // Get the first pair
+  Settings* settings = get_settings();
+  Tuple *t = dict_read_first(iterator);
+  while (t != NULL) {
+    // Process this pair's key
+    switch (t->key) {
+      case BACKGROUND_KEY:
+        settings->background = GColorFromHEX((int)t->value->int32);
+        break;
+      case LETTER_ON_KEY:
+        settings->letter_on = GColorFromHEX((int)t->value->int32);
+      break;
+      case LETTER_OFF_KEY:
+        settings->letter_off = GColorFromHEX((int)t->value->int32);
+        break;
+    }
+
+    // Get next pair, if any
+    t = dict_read_next(iterator);
+  }
+  main_window_unload(s_main_window);
+  main_window_load(s_main_window);
+}
+
+static void inbox_dropped_callback(AppMessageResult reason, void *context) {
+  APP_LOG(APP_LOG_LEVEL_ERROR, "Message dropped!");
+}
+
+static void outbox_failed_callback(DictionaryIterator *iterator, AppMessageResult reason, void *context) {
+  APP_LOG(APP_LOG_LEVEL_ERROR, "Outbox send failed!");
+}
+
+static void outbox_sent_callback(DictionaryIterator *iterator, void *context) {
+  APP_LOG(APP_LOG_LEVEL_INFO, "Outbox send success!");
+}
+
   
 static void init() {
+  init_settings();
+
   // get current language 
   initCurrentLng();
   
@@ -55,12 +97,23 @@ static void init() {
   
   // Register with TickTimerService
   tick_timer_service_subscribe(MINUTE_UNIT, tick_handler);
+  
+  // Register APP comunication
+  app_message_register_inbox_received(inbox_received_callback);
+  app_message_register_inbox_dropped(inbox_dropped_callback);
+  app_message_register_outbox_failed(outbox_failed_callback);
+  app_message_register_outbox_sent(outbox_sent_callback);
+  
+  const uint32_t inbound_size = 64;
+  const uint32_t outbound_size = 64;
+  app_message_open(inbound_size, outbound_size);
 }
 
 static void deinit() {
   // Destroy Window
   window_destroy(s_main_window);
   destroy_time2clockState();
+  deinit_settings();
 }
 
 static void initCurrentLng(){

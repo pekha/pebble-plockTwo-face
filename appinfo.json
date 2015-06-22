@@ -16,23 +16,18 @@
     "resources": {
         "media": [
             {
-                "file": "data/matrix-one-line-en.dat",
-                "name": "FILE_CLOCK_MATRIX_EN",
-                "type": "raw"
+                "file": "fonts/DIN Bold.ttf",
+                "name": "FONT_DIN_BOLD_14",
+                "type": "font"
             },
             {
-                "file": "data/matrix-one-line-fr.dat",
-                "name": "FILE_CLOCK_MATRIX_FR",
-                "type": "raw"
+                "file": "fonts/DIN Medium.ttf",
+                "name": "FONT_DIN_MEDIUM_14",
+                "type": "font"
             },
             {
-                "file": "data/on-fr.dat",
-                "name": "FILE_CLOCK_ON_FR",
-                "type": "raw"
-            },
-            {
-                "file": "data/on-en.dat",
-                "name": "FILE_CLOCK_ON_EN",
+                "file": "data/zones-fr.dat",
+                "name": "FILE_CLOCK_ZONES_FR",
                 "type": "raw"
             },
             {
@@ -41,19 +36,24 @@
                 "type": "raw"
             },
             {
-                "file": "data/zones-fr.dat",
-                "name": "FILE_CLOCK_ZONES_FR",
+                "file": "data/on-en.dat",
+                "name": "FILE_CLOCK_ON_EN",
                 "type": "raw"
             },
             {
-                "file": "fonts/DIN Medium.ttf",
-                "name": "FONT_DIN_MEDIUM_14",
-                "type": "font"
+                "file": "data/on-fr.dat",
+                "name": "FILE_CLOCK_ON_FR",
+                "type": "raw"
             },
             {
-                "file": "fonts/DIN Bold.ttf",
-                "name": "FONT_DIN_BOLD_14",
-                "type": "font"
+                "file": "data/matrix-one-line-fr.dat",
+                "name": "FILE_CLOCK_MATRIX_FR",
+                "type": "raw"
+            },
+            {
+                "file": "data/matrix-one-line-en.dat",
+                "name": "FILE_CLOCK_MATRIX_EN",
+                "type": "raw"
             }
         ]
     },
