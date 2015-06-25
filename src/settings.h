@@ -5,6 +5,7 @@
 #define LETTER_ON_KEY 2
 #define LETTER_OFF_KEY 3
 #define THINER_OFF_FONT_KEY 4
+#define COMMAND_KEY 5
 
 typedef struct {
   GColor8 background;

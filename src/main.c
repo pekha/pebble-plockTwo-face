@@ -35,30 +35,55 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
   update_time();
 }
 
+static int32_t getColor(GColor8 color){
+  int32_t result = 0;
+  result += color.r * 85 * 0x100;
+  result += color.g * 85 * 0x10;
+  result += color.b * 85 * 0x1;
+  return result;
+}
+
 static void inbox_received_callback(DictionaryIterator *iterator, void *context) {
   APP_LOG(APP_LOG_LEVEL_ERROR, "Message received!");
-  // Get the first pair
+  
   Settings* settings = get_settings();
-  Tuple *t = dict_read_first(iterator);
-  while (t != NULL) {
-    // Process this pair's key
-    switch (t->key) {
-      case BACKGROUND_KEY:
-        settings->background = GColorFromHEX((int)t->value->int32);
-        break;
-      case LETTER_ON_KEY:
-        settings->letter_on = GColorFromHEX((int)t->value->int32);
-      break;
-      case LETTER_OFF_KEY:
-        settings->letter_off = GColorFromHEX((int)t->value->int32);
-        break;
+  Tuple *command = dict_find(iterator, COMMAND_KEY);
+  if (command != NULL){
+    if (strcmp(command->value->cstring, "GET_SETTINGS") == 0){
+      DictionaryIterator *iter;
+      app_message_outbox_begin(&iter);
+      dict_write_int32(iter, BACKGROUND_KEY, getColor(settings->background));
+      dict_write_int32(iter, LETTER_ON_KEY, getColor(settings->letter_on));
+      dict_write_int32(iter, LETTER_OFF_KEY, getColor(settings->letter_off));
+      dict_write_uint8(iter, THINER_OFF_FONT_KEY, settings->thiner_off_font);
+      app_message_outbox_send();
     }
-
-    // Get next pair, if any
-    t = dict_read_next(iterator);
+    else if (strcmp(command->value->cstring, "SET_SETTINGS") == 0){
+      Tuple *t = dict_read_first(iterator);
+      while (t != NULL) {
+        // Process this pair's key
+        switch (t->key) {
+          case BACKGROUND_KEY:
+            settings->background = GColorFromHEX((int)t->value->int32);
+          break;
+          case LETTER_ON_KEY:
+            settings->letter_on = GColorFromHEX((int)t->value->int32);
+          break;
+          case LETTER_OFF_KEY:
+            settings->letter_off = GColorFromHEX((int)t->value->int32);
+          break;
+          case THINER_OFF_FONT_KEY:
+            settings->thiner_off_font = ((bool)t->value->uint8);
+          break;
+        }
+    
+        // Get next pair, if any
+        t = dict_read_next(iterator);
+      }
+      main_window_unload(s_main_window);
+      main_window_load(s_main_window);
+    }
   }
-  main_window_unload(s_main_window);
-  main_window_load(s_main_window);
 }
 
 static void inbox_dropped_callback(AppMessageResult reason, void *context) {

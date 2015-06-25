@@ -1,18 +1,35 @@
+Pebble.addEventListener('appmessage',
+  function(e) {
+    console.log('Received message: ' + JSON.stringify(e));
+  }
+);
 Pebble.addEventListener("showConfiguration",
   function(e) {
-    Pebble.openURL("https://rawgit.com/pekha/pebble-plockTwo-face/nico/configurable.html");
+    var dict = {
+      'COMMAND_KEY' : 'GET_SETTINGS'
+    };
+    Pebble.sendAppMessage(dict,
+        function(ee) {
+          Pebble.openURL("https://rawgit.com/pekha/pebble-plockTwo-face/nico/configurable.html");
+        },
+        function(ee) {
+          Pebble.openURL("https://rawgit.com/pekha/pebble-plockTwo-face/nico/configurable.html");
+        }
+      );      
+    
   }
 );
 Pebble.addEventListener("webviewclosed",
   function(e) {
-    console.log('Configuration window returned:  ' + e.data);
     if (e.data != "CANCELLED"){
-      var configuration = e.data.split(';');
+      console.log('webviewclosed: ' + JSON.stringify(e));
+      var configuration = JSON.parse(decodeURIComponent(e.data));
       var dict = {
-        'BACKGROUND_KEY' : parseInt(configuration[0], 16), //BACKGROUND_KEY
-        'LETTER_ON_KEY' : parseInt(configuration[2], 16), //LETTER_ON_KEY
-        'LETTER_OFF_KEY' : parseInt(configuration[1], 16) // LETTER_OFF_KEY
-      //  'THINER_OFF_FONT_KEY'
+        'BACKGROUND_KEY' : parseInt(configuration.background, 16),
+        'LETTER_ON_KEY' : parseInt(configuration.letter_on, 16),
+        'LETTER_OFF_KEY' : parseInt(configuration.letter_off, 16),
+        'THINER_OFF_FONT_KEY' : configuration.thiner_off_font,
+        'COMMAND_KEY' : 'SET_SETTINGS'
       };
       
       console.log('Dict: ' + JSON.stringify(dict));
