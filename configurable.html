@@ -80,17 +80,13 @@ function save(){
 	background = myRegex.exec(background.style.background)
 	letter_off = myRegex.exec(letter_off.style.color)
 	letter_on = myRegex.exec(letter_on.style.color)
-	var params = toHex(background[1]) +
-	toHex(background[2]) +
-	toHex(background[3]) + ";" +
-	toHex(letter_off[1]) +
-	toHex(letter_off[2]) +
-	toHex(letter_off[3]) + ";" +
-	toHex(letter_on[1]) +
-	toHex(letter_on[2]) +
-	toHex(letter_on[3]);
+	var params = {
+		background : toHex(background[1]) + toHex(background[2]) + toHex(background[3],
+		letter_on : toHex(letter_on[1]) + toHex(letter_on[2]) + toHex(letter_on[3]),
+		letter_off : toHex(letter_off[1]) + toHex(letter_off[2]) + toHex(letter_off[3])
+	}
 	var return_to = getQueryParam('return_to', 'pebblejs://close#');
-	document.location = return_to + params;
+	document.location = return_to + encodeURIComponent(JSON.stringify(params));;
 }
 </script>
 <style type="text/css" title="myStyle">
