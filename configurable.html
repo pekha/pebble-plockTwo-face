@@ -7,6 +7,16 @@
   </head>
   <body>
 <script >
+window.onload = function load(){
+	var settings = JSON.parse(decodeURIComponent(window.location.hash.substring(1)));
+	
+	//letter_off
+	getStyleSheet().cssRules[1].style.color = "#" + pad(new Number(settings.letter_off).toString(16),6);
+	//letter_on
+	getStyleSheet().cssRules[2].style.color = "#" + pad(new Number(settings.letter_on).toString(16),6);
+	//background
+	getStyleSheet().cssRules[0].style.background = "#" + pad(new Number(settings.background).toString(16),6);
+}
 var choice = 0;
 function getStyleSheet(){
 	var res;
