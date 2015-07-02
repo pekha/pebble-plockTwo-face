@@ -1,6 +1,7 @@
 {
     "appKeys": {
         "BACKGROUND_KEY": 1,
+        "COMMAND_KEY": 5,
         "LETTER_OFF_KEY": 3,
         "LETTER_ON_KEY": 2,
         "STORAGE_VERSION_KEY": 0,
