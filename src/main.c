@@ -53,8 +53,11 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
       DictionaryIterator *iter;
       app_message_outbox_begin(&iter);
       dict_write_int32(iter, BACKGROUND_KEY, getColor(settings->background));
+      APP_LOG(APP_LOG_LEVEL_ERROR, "Background : %d", settings->background.argb);
       dict_write_int32(iter, LETTER_ON_KEY, getColor(settings->letter_on));
+      APP_LOG(APP_LOG_LEVEL_ERROR, "letter_on : %d", settings->letter_on.argb);
       dict_write_int32(iter, LETTER_OFF_KEY, getColor(settings->letter_off));
+      APP_LOG(APP_LOG_LEVEL_ERROR, "letter_off : %d", settings->letter_off.argb);
       dict_write_uint8(iter, THINER_OFF_FONT_KEY, settings->thiner_off_font);
       app_message_outbox_send();
     }

@@ -10,10 +10,10 @@ Pebble.addEventListener("showConfiguration",
     };
     Pebble.sendAppMessage(dict,
         function(ee) {
-          Pebble.openURL("https://rawgit.com/pekha/pebble-plockTwo-face/nico/configurable.html");
+          Pebble.openURL("http://2154e07b.ngrok.io/");
         },
         function(ee) {
-          Pebble.openURL("https://rawgit.com/pekha/pebble-plockTwo-face/nico/configurable.html");
+          Pebble.openURL("http://2154e07b.ngrok.io/");
         }
       );      
     
@@ -21,9 +21,9 @@ Pebble.addEventListener("showConfiguration",
 );
 Pebble.addEventListener("webviewclosed",
   function(e) {
-    if (e.data != "CANCELLED"){
+    if (e.response != ""){
       console.log('webviewclosed: ' + JSON.stringify(e));
-      var configuration = JSON.parse(decodeURIComponent(e.data));
+      var configuration = JSON.parse(decodeURIComponent(e.response));
       var dict = {
         'BACKGROUND_KEY' : parseInt(configuration.background, 16),
         'LETTER_ON_KEY' : parseInt(configuration.letter_on, 16),
