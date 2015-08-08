@@ -1,6 +1,7 @@
 Pebble.addEventListener('appmessage',
   function(e) {
     console.log('Received message: ' + JSON.stringify(e));
+    Pebble.openURL("https://cdn.rawgit.com/pekha/pebble-plockTwo-face/1.0.1/configurable.html#" + encodeURIComponent(JSON.stringify(e.payload)));
   }
 );
 Pebble.addEventListener("showConfiguration",
@@ -8,22 +9,15 @@ Pebble.addEventListener("showConfiguration",
     var dict = {
       'COMMAND_KEY' : 'GET_SETTINGS'
     };
-    Pebble.sendAppMessage(dict,
-        function(ee) {
-          Pebble.openURL("http://2154e07b.ngrok.io/");
-        },
-        function(ee) {
-          Pebble.openURL("http://2154e07b.ngrok.io/");
-        }
-      );      
-    
+    Pebble.sendAppMessage(dict);
   }
 );
 Pebble.addEventListener("webviewclosed",
   function(e) {
-    if (e.response != ""){
+    var data = e.data || e.response;
+    if (data != ""){
       console.log('webviewclosed: ' + JSON.stringify(e));
-      var configuration = JSON.parse(decodeURIComponent(e.response));
+      var configuration = JSON.parse(decodeURIComponent(data));
       var dict = {
         'BACKGROUND_KEY' : parseInt(configuration.background, 16),
         'LETTER_ON_KEY' : parseInt(configuration.letter_on, 16),
