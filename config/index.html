@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel='stylesheet' type='text/css' href='/bower_components/pebble-slate/dist/css/slate.min.css'>
+  <link rel='stylesheet' type='text/css' href='/css/style.css'>
+  <link rel='stylesheet' title='myStyle' type='text/css' href='/css/colors.css'>
+</head>
+<body>
+  <div class='item-container'>
+    <h1 class='title'>Plock Two<br>Configuration Page</h1>
+  </div>
+  <div class='item-container'>
+    <div class='item-container-content'>
+      <div class='item'>
+        Use this configuration page to choose the colors you would like
+        applied to this watch.
+      </div>
+    </div>
+  </div>
+  <!--div class='item-container'>
+  <div class="item-container-content">
+    <div class="item">
+  <FORM>
+<TABLE BORDER="0" class="background preview sized"> 
+<tr><td class="letter_on">I</td><td class="letter_on">T</td><td class="letter_off">L</td><td class="letter_on">I</td><td class="letter_on">S</td><td class="letter_off">A</td><td class="letter_off">S</td><td class="letter_off">A</td><td class="letter_off">M</td><td class="letter_off">P</td><td class="letter_off">M</td></tr>
+<tr><td class="letter_on">A</td><td class="letter_off">C</td><td class="letter_on">Q</td><td class="letter_on">U</td><td class="letter_on">A</td><td class="letter_on">R</td><td class="letter_on">T</td><td class="letter_on">E</td><td class="letter_on">R</td><td class="letter_off">D</td><td class="letter_off">C</td></tr>
+<tr><td class="letter_off">T</td><td class="letter_off">W</td><td class="letter_off">E</td><td class="letter_off">N</td><td class="letter_off">T</td><td class="letter_off">Y</td><td class="letter_off">F</td><td class="letter_off">I</td><td class="letter_off">V</td><td class="letter_off">E</td><td class="letter_off">X</td></tr>
+<tr><td class="letter_off">H</td><td class="letter_off">A</td><td class="letter_off">L</td><td class="letter_off">F</td><td class="letter_off">S</td><td class="letter_off">T</td><td class="letter_off">E</td><td class="letter_off">N</td><td class="letter_off">F</td><td class="letter_off">T</td><td class="letter_off">O</td></tr>
+<tr><td class="letter_on">P</td><td class="letter_on">A</td><td class="letter_on">S</td><td class="letter_on">T</td><td class="letter_off">E</td><td class="letter_off">R</td><td class="letter_off">U</td><td class="letter_off">N</td><td class="letter_off">I</td><td class="letter_off">N</td><td class="letter_off">E</td></tr>
+<tr><td class="letter_off">O</td><td class="letter_off">N</td><td class="letter_off">E</td><td class="letter_off">S</td><td class="letter_off">I</td><td class="letter_off">X</td><td class="letter_off">T</td><td class="letter_off">H</td><td class="letter_off">R</td><td class="letter_off">E</td><td class="letter_off">E</td></tr>
+<tr><td class="letter_off">F</td><td class="letter_off">O</td><td class="letter_off">U</td><td class="letter_off">R</td><td class="letter_off">F</td><td class="letter_off">I</td><td class="letter_off">V</td><td class="letter_off">E</td><td class="letter_off">T</td><td class="letter_off">W</td><td class="letter_off">O</td></tr>
+<tr><td class="letter_off">E</td><td class="letter_off">I</td><td class="letter_off">G</td><td class="letter_off">H</td><td class="letter_off">T</td><td class="letter_on">E</td><td class="letter_on">L</td><td class="letter_on">E</td><td class="letter_on">V</td><td class="letter_on">E</td><td class="letter_on">N</td></tr>
+<tr><td class="letter_off">S</td><td class="letter_off">E</td><td class="letter_off">V</td><td class="letter_off">E</td><td class="letter_off">N</td><td class="letter_off">T</td><td class="letter_off">W</td><td class="letter_off">E</td><td class="letter_off">L</td><td class="letter_off">V</td><td class="letter_off">E</td></tr>
+<tr><td class="letter_off">T</td><td class="letter_off">E</td><td class="letter_off">N</td><td class="letter_off">S</td><td class="letter_off">E</td><td class="letter_off">O</td><td class="letter_off">C</td><td class="letter_off">L</td><td class="letter_off">O</td><td class="letter_off">C</td><td class="letter_off">K</td></tr>
+</TABLE>
+</div>
+</div>
+</div-->
+  <div class='item-container'>
+    <div class='item-container-content'>
+      <label class='item'>
+        Background Color
+        <input id='backgroundColorPicker' type='text' class='item-color item-color-sunny' value='#000000'>
+      </label>
+    </div>
+	<div class='item-container-content'>
+      <label class='item'>
+        Light Off Color
+        <input id='lightOffColorPicker' type='text' class='item-color item-color-sunny' value='#000000'>
+      </label>
+    </div>
+	<div class='item-container-content'>
+      <label class='item'>
+        Light On Color
+        <input id='lightOnColorPicker' type='text' class='item-color item-color-sunny' value='#000000'>
+      </label>
+    </div>
+  </div>
+  <!--div class='item-container-content'>
+	<label class='item'>
+        Bold Off Font
+        <input id='boldCheckbox' type='checkbox' class='item-checkbox' checked>
+    </label>
+  </div-->
+  <div class='item-container-footer'>
+      These settings only change on the watch after you click save.
+  </div>
+  <div class='item-container'>
+    <div class='button-container'>
+      <input id='submitButton' type='button' class='item-button' value='SUBMIT'>
+    </div>
+  </div>
+  <script src='/bower_components/pebble-slate/dist/js/slate.min.js'></script>
+  <script src='/js/main.js'></script>
+</body>
+</html>

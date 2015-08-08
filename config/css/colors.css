@@ -1,0 +1,10 @@
+.background{
+    background: #000;
+    text-align: center;
+}
+.letter_off{
+    color:#555;
+} 
+.letter_on{
+    color:#FFF;
+}
