@@ -37,8 +37,11 @@ static void tick_handler(struct tm *tick_time, TimeUnits units_changed) {
 
 static int32_t getColor(GColor8 color){
   int32_t result = 0;
-  result += color.r * 85 * 0x100;
-  result += color.g * 85 * 0x10;
+  APP_LOG(APP_LOG_LEVEL_ERROR, "R : %d", color.r);
+  APP_LOG(APP_LOG_LEVEL_ERROR, "G : %d", color.g);
+  APP_LOG(APP_LOG_LEVEL_ERROR, "B : %d", color.b);
+  result += color.r * 85 * 0x10000;
+  result += color.g * 85 * 0x100;
   result += color.b * 85 * 0x1;
   return result;
 }
@@ -53,11 +56,11 @@ static void inbox_received_callback(DictionaryIterator *iterator, void *context)
       DictionaryIterator *iter;
       app_message_outbox_begin(&iter);
       dict_write_int32(iter, BACKGROUND_KEY, getColor(settings->background));
-      APP_LOG(APP_LOG_LEVEL_ERROR, "Background : %d", settings->background.argb);
+      APP_LOG(APP_LOG_LEVEL_ERROR, "Background : %ld", (long)getColor(settings->background));
       dict_write_int32(iter, LETTER_ON_KEY, getColor(settings->letter_on));
-      APP_LOG(APP_LOG_LEVEL_ERROR, "letter_on : %d", settings->letter_on.argb);
+      APP_LOG(APP_LOG_LEVEL_ERROR, "letter_on : %ld", (long)getColor(settings->background));
       dict_write_int32(iter, LETTER_OFF_KEY, getColor(settings->letter_off));
-      APP_LOG(APP_LOG_LEVEL_ERROR, "letter_off : %d", settings->letter_off.argb);
+      APP_LOG(APP_LOG_LEVEL_ERROR, "letter_off : %ld", (long)getColor(settings->background));
       dict_write_uint8(iter, THINER_OFF_FONT_KEY, settings->thiner_off_font);
       app_message_outbox_send();
     }
