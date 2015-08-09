@@ -1,7 +1,7 @@
 Pebble.addEventListener('appmessage',
   function(e) {
     console.log('Current settings message: ' + JSON.stringify(e));
-    var url = "https://cdn.rawgit.com/pekha/pebble-plockTwo-face/1.1/config/"; // https://cdn.rawgit.com/pekha/pebble-plockTwo-face/1.0.1/configurable.html
+    var url = "https://cdn.rawgit.com/pekha/pebble-plockTwo-face/1.2/config/"; // https://cdn.rawgit.com/pekha/pebble-plockTwo-face/1.0.1/configurable.html
     var dict = e.payload;
     var settings = {
       letter_off: dict.LETTER_OFF_KEY,
